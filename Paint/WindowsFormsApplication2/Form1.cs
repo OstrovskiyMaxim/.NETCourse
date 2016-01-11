@@ -22,7 +22,6 @@ namespace WindowsFormsApplication2
             trk_width.Minimum = 1;
             trk_width.Maximum = 9;
             trk_width.TickFrequency = 1;
-
         }
 
         int x;
@@ -42,7 +41,6 @@ namespace WindowsFormsApplication2
         {
             if (flag)
             {
-
                 Graphics g = Graphics.FromImage(DrawArea);
                     //pictureBox1.CreateGraphics();
                 g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
@@ -50,7 +48,6 @@ namespace WindowsFormsApplication2
                 x = e.X;
                 y = e.Y;
                 pictureBox1.Image = DrawArea;
-
             }
         }
 
