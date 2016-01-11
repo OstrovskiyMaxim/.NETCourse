@@ -8,15 +8,16 @@ namespace WindowsFormsApplication2
 {
     public class PicDS
     {
-        List<IPicDS> ExtentionClassesList;
-
+        IPicDS root;
         public PicDS()
         {
-            ExtentionClassesList = new List<IPicDS>();
-            ExtentionClassesList.Add(new Jpeg());
-            ExtentionClassesList.Add(new Bmp());
-            ExtentionClassesList.Add(new Png());
+            root = new Jpeg();
 
+            IPicDS temp = root;
+            temp.Next = new Png();
+
+            temp = temp.Next;
+            temp.Next = new Bmp();
         }
 
         private string GetExtention(string path)
@@ -24,7 +25,7 @@ namespace WindowsFormsApplication2
             string extention = "";
             if (path != "")
             {
-               extention = (path.Substring(path.LastIndexOf('.') + 1)).ToString().ToLower();
+                extention = (path.Substring(path.LastIndexOf('.') + 1)).ToString().ToLower();
             }
             return extention;
         }
@@ -32,12 +33,14 @@ namespace WindowsFormsApplication2
         public IPicDS GetInstance(string path)
         {
             string extension = GetExtention(path);
-            foreach (IPicDS item in ExtentionClassesList)
+            IPicDS nodeNow = root;
+            while (nodeNow != null)
             {
-                if (item.IsYours(extension))
+                if(nodeNow.Ext == extension)
                 {
-                    return item;
+                    return nodeNow;
                 }
+                nodeNow = nodeNow.Next;
             }
             return null;
         }

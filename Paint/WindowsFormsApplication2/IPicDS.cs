@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication2
 {
-    interface IPicDS
+    public interface IPicDS
     {
         void Save();
         Bitmap Load();
         string Ext { get; }
         bool IsYours(string extention);
+        IPicDS Next{ get; set; }
     }
 }
