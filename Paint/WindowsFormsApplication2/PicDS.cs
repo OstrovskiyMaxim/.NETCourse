@@ -13,10 +13,7 @@ namespace WindowsFormsApplication2
         public PicDS()
         {
             ExtentionClassesList = new List<IPicDS>();
-            ExtentionClassesList.Add(new Jpeg());
-            ExtentionClassesList.Add(new Bmp());
-            ExtentionClassesList.Add(new Png());
-
+            ExtentionClassesList.Add(new BitmapStandartSaver());
         }
 
         private string GetExtention(string path)
@@ -32,6 +29,10 @@ namespace WindowsFormsApplication2
         public IPicDS GetInstance(string path)
         {
             string extension = GetExtention(path);
+            if (extension == "jpg" || extension == "bmp" || extension == "gif" || extension == "png" || extension == "tiff" || extension == "ico")
+            {
+                extension = "bitmap";
+            }
             foreach (IPicDS item in ExtentionClassesList)
             {
                 if (item.IsYours(extension))

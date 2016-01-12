@@ -83,36 +83,13 @@ namespace WindowsFormsApplication2
             if (saveFileDialog1.ShowDialog() != DialogResult.OK) return;
 
             var savedBit = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            Bitmap saveBit = (Bitmap)pictureBox1.Image;
-            
+            //Bitmap saveBit = (Bitmap)pictureBox1.Image;
+
             pictureBox1.DrawToBitmap(savedBit, pictureBox1.ClientRectangle);
 
+            PicDS saver = new PicDS();
             string path = saveFileDialog1.FileName;
-            if(path != "")
-            {
-                string extention = (path.Substring(path.LastIndexOf('.') + 1)).ToString().ToLower();
-                switch (extention)
-                {
-                    case "jpg":
-                        savedBit.Save(path, System.Drawing.Imaging.ImageFormat.Jpeg);
-                        break;
-                    case "bmp":
-                        savedBit.Save(path, System.Drawing.Imaging.ImageFormat.Bmp);
-                        break;
-                    case "gif":
-                        savedBit.Save(path, System.Drawing.Imaging.ImageFormat.Gif);
-                        break;
-                    case "png":
-                        savedBit.Save(path, System.Drawing.Imaging.ImageFormat.Png);
-                        break;
-                    case "tiff":
-                        savedBit.Save(path, System.Drawing.Imaging.ImageFormat.Tiff);
-                        break;
-                    case "ico":
-                        savedBit.Save(path, System.Drawing.Imaging.ImageFormat.Icon);
-                        break;
-                }
-            }
+            saver.GetInstance(path).Save(path, savedBit);
 
             savedBit.Dispose();
             saveFileDialog1.Dispose();
@@ -125,13 +102,16 @@ namespace WindowsFormsApplication2
             {
                 return;
             }
-            Bitmap openedBit = new Bitmap(openFileDialog1.FileName);
+
+            PicDS saver = new PicDS();
+            string path = openFileDialog1.FileName;
+            Bitmap openedBit = saver.GetInstance(path).Load(path);
 
             Clear_Drawing_area();
             DrawArea = openedBit;
             pictureBox1.Image = DrawArea;
             openFileDialog1.Dispose();
-            openedBit.Dispose();
+            //openedBit.Dispose();
         }
 
         private void Clear_Drawing_area()
