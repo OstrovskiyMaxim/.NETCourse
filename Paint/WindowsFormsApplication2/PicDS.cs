@@ -14,6 +14,7 @@ namespace WindowsFormsApplication2
         {
             ExtentionClassesList = new List<IPicDS>();
             ExtentionClassesList.Add(new BitmapStandartSaver());
+            ExtentionClassesList.Add(new PDF());
         }
 
         private string GetExtention(string path)

@@ -33,6 +33,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PQScan.ImageToPDF">
+      <HintPath>pqScan.ImageToPDF.Eval\Lib\PQScan.ImageToPDF.dll</HintPath>
+    </Reference>
+    <Reference Include="PQScan.PDFToImage, Version=6.3.0.41116, Culture=neutral, PublicKeyToken=7cc657bf9afce61f, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>pqScan.PDFToImage.Eval\Lib\x86\.net4.5\PQScan.PDFToImage.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -54,6 +61,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="IPicDS.cs" />
+    <Compile Include="PDF.cs" />
     <Compile Include="PicDS.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

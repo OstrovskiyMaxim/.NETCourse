@@ -78,7 +78,7 @@ namespace WindowsFormsApplication2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            saveFileDialog1.Filter = "Image Files(*.BMP;)|*.BMP|Image Files(*.JPG;)|*.jpg|Image Files(*.GIF;)|*.gif|Image Files(*.PNG;)|*.png|Image Files(*.TIFF;)|*.tiff|Image Files(*.ICON;)|*.ico;";
+            saveFileDialog1.Filter = "PDF File(*.PDF;)|*.PDF|Image Files(*.BMP;)|*.BMP|Image Files(*.JPG;)|*.jpg|Image Files(*.GIF;)|*.gif|Image Files(*.PNG;)|*.png|Image Files(*.TIFF;)|*.tiff|Image Files(*.ICON;)|*.ico;";
 
             if (saveFileDialog1.ShowDialog() != DialogResult.OK) return;
 
@@ -97,7 +97,7 @@ namespace WindowsFormsApplication2
 
         private void button2_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "Image Files(*.BMP;)|*.BMP|Image Files(*.JPG;)|*.jpg|Image Files(*.GIF;)|*.gif|Image Files(*.PNG;)|*.png|Image Files(*.TIFF;)|*.tiff|Image Files(*.ICON;)|*.ico;";
+            openFileDialog1.Filter = "PDF File(*.PDF;)|*.PDF|Image Files(*.BMP;)|*.BMP|Image Files(*.JPG;)|*.jpg|Image Files(*.GIF;)|*.gif|Image Files(*.PNG;)|*.png|Image Files(*.TIFF;)|*.tiff|Image Files(*.ICON;)|*.ico;";
             if (openFileDialog1.ShowDialog() != DialogResult.OK)
             {
                 return;

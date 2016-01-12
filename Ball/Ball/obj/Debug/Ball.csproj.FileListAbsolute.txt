@@ -1,0 +1,3 @@
+C:\Git\Course1\Ball\Ball\bin\Debug\Ball.exe.config
+C:\Git\Course1\Ball\Ball\obj\Debug\Ball.exe
+C:\Git\Course1\Ball\Ball\obj\Debug\Ball.pdb
