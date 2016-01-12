@@ -32,8 +32,6 @@ namespace WindowsFormsApplication2
             }
         }
 
-       
-
         public bool IsYours(string extention)
         {
             if (extention == Ext)
