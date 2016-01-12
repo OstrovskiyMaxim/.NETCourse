@@ -21,22 +21,22 @@ namespace Ball
             g = CreateGraphics();
         }
 
-        List<BouncingBallClass> bouncingBalls = new List<BouncingBallClass>();
+        List<BouncingBallClass> Balls = new List<BouncingBallClass>();
         Graphics g;
 
         private void BouncingBallForm_MouseClick(object sender, MouseEventArgs e)
         {
-            bouncingBalls.Add(new BouncingBallClass(e.X, e.Y));
-            bouncingBalls[bouncingBalls.Count-1].DrawBall(g, this.ClientSize.Width, this.ClientSize.Height);
+            Balls.Add(new BouncingBallClass(e.X, e.Y));
+            Balls[Balls.Count-1].DrawBall(g, this.ClientSize.Width, this.ClientSize.Height);
             timer1.Enabled = true;
         }
 
         private void MovingBall()
         {
             g.Clear(this.BackColor);
-            for (int i = 0; i < bouncingBalls.Count; i++)
+            for (int i = 0; i < Balls.Count; i++)
             {
-                bouncingBalls[i].DrawBall(g, this.Width, this.Height);
+                Balls[i].DrawBall(g, this.Width, this.Height);
             }
         }
 
@@ -47,68 +47,53 @@ namespace Ball
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            saveFileDialog1.Filter = "XML files | *.xml | JSON files | *.json | CSV files | *.csv ";
+            SaveState();
+            saveFileDialog1.Filter = "XML files | *.xml | JSON files | *.json | CSV files | *.csv | YAML files | *.yaml ";
 
             if (saveFileDialog1.ShowDialog() != DialogResult.OK) return;
-            //var savedBit = new Bitmap(pictureBox.Width, pictureBox.Height);
-            //pictureBox.DrawToBitmap(savedBit, pictureBox.ClientRectangle);
             string ext = saveFileDialog1.FileName.Substring(saveFileDialog1.FileName.LastIndexOf('.') + 1);
 
-
-            //switch (ext)
-            //{
-            //    //case "bmp":
-            //    //    format = FileFormat.Bmp;
-            //    //    break;
-            //    //case "jpeg":
-            //    //    format = ImageFormat.Jpeg;
-            //    //    break;
-            //    //case "tiff":
-            //    //    format = ImageFormat.Tiff;
-            //    //    break;
-            //    //case "gif":
-            //    //    format = ImageFormat.Gif;
-            //    //    break;
-            //    //case "png":
-            //    //    format = ImageFormat.Png;
-            //    //    break;
-            //    //case "emf":
-            //    //    format = ImageFormat.Emf;
-            //    //    break;
-            //    default:
-            //        format = ImageFormat.Png;
-            //        break;
-            //}
-            //savedBit.Save(saveFileDialog1.FileName);
-            //savedBit.Dispose();
-            //saveFileDialog1.Dispose();
-
-
-            Saving s = new Saving();
-
-             s.ToXML(bouncingBalls, saveFileDialog1.FileName);
-            //s.ToJSON(bouncingBalls, saveFileDialog1.FileName);
-            //s.ToCSV(bouncingBalls, saveFileDialog1.FileName);
-
-
+            Factory cr = new Factory();
+            cr.Format(ext.ToUpper());
+            cr.To(mem.GetState, saveFileDialog1.FileName);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Saving s = new Saving();
-
-            openFileDialog1.Filter = "XML files | *.xml | JSON files | *.json | CSV files | *.csv ";
+            openFileDialog1.Filter = "XML files | *.xml | JSON files | *.json | CSV files | *.csv | YAML files | *.yaml ";
             if (openFileDialog1.ShowDialog() != DialogResult.OK) return;
+            string ext = openFileDialog1.FileName.Substring(openFileDialog1.FileName.LastIndexOf('.') + 1);
 
-            bouncingBalls = s.FromXML(openFileDialog1.FileName);
-            //XmlSerializer deserializer = new XmlSerializer(typeof(List<BouncingBallClass>));
-            //TextReader reader = new StreamReader(openFileDialog1.FileName);
-            //object obj = deserializer.Deserialize(reader);
-            //List<BouncingBallClass> XmlData = (List<BouncingBallClass>)obj;
-            //reader.Close();
-            //bouncingBalls = XmlData;
+
+            Factory cr = new Factory();
+            cr.Format(ext.ToUpper());
+            
+            mem = new Momento(cr.From(openFileDialog1.FileName));
+            LoadState();
             timer1.Start();
+        }
+
+        Momento mem;
+
+        public void SaveState()
+        {
+            var list = new List<MBall>();
+            foreach (var item in Balls)
+            {
+                list.Add(new MBall() { dx = item.dx, dy = item.dy, radius = item.radius, x = item.X, y = item.Y });
+            }
+
+            mem = new Momento(list);
+        }
+
+        public void LoadState()
+        {
+            Balls = new List<BouncingBallClass>();
+            
+            foreach (var item in mem.GetState)
+            {
+                Balls.Add(new BouncingBallClass() { dx = item.dx, dy = item.dy, radius = item.radius, X = item.x, Y = item.y });
+            }
         }
     }
 }

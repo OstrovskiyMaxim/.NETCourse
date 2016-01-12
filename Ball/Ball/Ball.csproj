@@ -48,6 +48,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="YamlSerializer">
+      <HintPath>..\packages\YamlSerializer0902\YamlSerializer.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BouncingBallClass.cs" />
@@ -57,9 +60,17 @@
     <Compile Include="BouncingBallForm.Designer.cs">
       <DependentUpon>BouncingBallForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CSV.cs" />
+    <Compile Include="Factory.cs" />
+    <Compile Include="IFormat.cs" />
+    <Compile Include="JSON.cs" />
+    <Compile Include="MBall.cs" />
+    <Compile Include="Momento.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Saving.cs" />
+    <Compile Include="XML.cs" />
+    <Compile Include="YAML.cs" />
     <EmbeddedResource Include="BouncingBallForm.resx">
       <DependentUpon>BouncingBallForm.cs</DependentUpon>
     </EmbeddedResource>

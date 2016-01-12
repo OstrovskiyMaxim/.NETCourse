@@ -40,7 +40,7 @@ namespace Ball
             {
                 color = Color.FromArgb(rannd.Next(255), rannd.Next(255), rannd.Next(255));
             }
-            radius = rannd.Next(1, 25);
+            radius = rannd.Next(1, 100);
         }
 
         public void DrawBall(Graphics g, int width, int height)
