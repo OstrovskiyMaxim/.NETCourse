@@ -60,7 +60,7 @@ namespace Ball
 
         private void button2_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "XML files | *.xml | JSON files | *.json | CSV files | *.csv | YAML files | *.yaml ";
+            openFileDialog1.Filter = "XML files|*.xml|JSON files|*.json|CSV files|*.csv|YAML files |*.yaml";
             if (openFileDialog1.ShowDialog() != DialogResult.OK) return;
             string ext = openFileDialog1.FileName.Substring(openFileDialog1.FileName.LastIndexOf('.') + 1);
 
