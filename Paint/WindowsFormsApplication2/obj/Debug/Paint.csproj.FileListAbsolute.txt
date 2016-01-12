@@ -10,3 +10,9 @@ C:\Users\Maxim\Documents\Visual Studio 2015\Projects\WindowsFormsApplication2\Wi
 C:\Git\Course1\Paint\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe.config
 C:\Git\Course1\Paint\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.exe
 C:\Git\Course1\Paint\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.pdb
+C:\Git\Course1\Paint\WindowsFormsApplication2\obj\Debug\Paint.csprojResolveAssemblyReference.cache
+C:\Git\Course1\Paint\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.Paint.resources
+C:\Git\Course1\Paint\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.Properties.Resources.resources
+C:\Git\Course1\Paint\WindowsFormsApplication2\obj\Debug\Paint.csproj.GenerateResource.Cache
+C:\Git\Course1\Paint\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe
+C:\Git\Course1\Paint\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.pdb

@@ -11,7 +11,7 @@ namespace WindowsFormsApplication2
         IPicDS root;
         public PicDS()
         {
-            root = new Jpeg();
+            root = new BitmapStandartSaver();
 
             IPicDS temp = root;
             temp.Next = new Png();
@@ -33,6 +33,10 @@ namespace WindowsFormsApplication2
         public IPicDS GetInstance(string path)
         {
             string extension = GetExtention(path);
+            if(extension == "jpg" || extension == "bmp" || extension == "gif" || extension == "png" || extension == "tiff" || extension == "ico")
+            {
+                extension = "bitmap";
+            }
             IPicDS nodeNow = root;
             while (nodeNow != null)
             {

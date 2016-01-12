@@ -9,8 +9,8 @@ namespace WindowsFormsApplication2
 {
     public interface IPicDS
     {
-        void Save();
-        Bitmap Load();
+        void Save(string path, Bitmap Savebit);
+        Bitmap Load(string path);
         string Ext { get; }
         bool IsYours(string extention);
         IPicDS Next{ get; set; }
