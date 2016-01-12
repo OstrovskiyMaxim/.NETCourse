@@ -13,11 +13,11 @@ namespace WindowsFormsApplication2
         {
             root = new BitmapStandartSaver();
 
-            IPicDS temp = root;
-            temp.Next = new Png();
+            //IPicDS temp = root;
+            //temp.Next = new Png();
 
-            temp = temp.Next;
-            temp.Next = new Bmp();
+            //temp = temp.Next;
+            //temp.Next = new Bmp();
         }
 
         private string GetExtention(string path)
